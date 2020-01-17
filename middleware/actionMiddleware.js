@@ -6,6 +6,7 @@ function validateAction(req, res, next) {
   const errors = {};
   if (!project_id) errors.project_id = "Please enter project_id";
   if (!description) errors.missingDescription = "Please enter description";
+  if (description && description.length > 148 ) errors.descriptionLength = "Description Length Too long.  Max 148 Characters"
   if (!notes) errors.missingNotes = "Please enter notes";
   if (Object.keys(errors).length) res.status(400).json(errors);
 
